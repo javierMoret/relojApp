@@ -1,0 +1,52 @@
+<div class="contenedorPrincipal">
+    <div class="containerIzq">
+        <div class="containerFechaYHora">
+            <div class="containerHora" id="reloj">{{momentoActual | date: 'HH:mm:ss'}}</div>
+            <div class="containerFecha">{{momentoActual | date:'EEEE, dd' | titlecase}} de {{momentoActual | date: 'MMMM'}} de {{momentoActual | date: 'YYYY'}}</div>
+        </div>
+        <div class="containerBoton">
+            <button class="btnCrear" data-bs-toggle="modal" data-bs-target="#modalAlarma">Crear alarma</button>
+        </div>
+    </div>
+
+    <div class="containerDer" >
+        <div class="listaAlarmas" *ngIf="listaAlarmas.length>0" >
+            <div class="titulo">Lista de Alarmas</div>
+            <hr>
+            <div class="" *ngFor="let alarma of listaAlarmas">
+                <div>Nombre: {{alarma.nombre}}</div>
+                <div>Hora: {{alarma.hora}}</div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modalAlarma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Crear una alarma</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div class="inputNombre mb-3">
+                <label for="">Nombre</label>
+                <input type="text" name="nombre" id="nombre" [(ngModel)]="nombre">
+                
+            </div>
+            <div class="inputHora">
+                <label for="">Hora</label>
+                <input type="time" name="" id="hora" [(ngModel)]="hora"> 
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="crearAlarma()">Crear alarma</button>
+        </div>
+      </div>
+    </div>
+  </div>
