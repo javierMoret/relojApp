@@ -24,6 +24,7 @@
     font-size: 10em;
     color: WHITE;
     text-shadow: 5px 5px #000000BB;
+    margin-bottom: 10vh;
 }
 .containerFecha{
     font-size: 1.2em;
@@ -60,7 +61,7 @@ input{
 .listaAlarmas{
     background-color: white;
     padding: 5%;
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 2px 2px 5px black;
     margin-right: 10%;
     margin-top: 20vh;
 }

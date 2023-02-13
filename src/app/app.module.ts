@@ -8,6 +8,8 @@ import { PaginaPrincipalComponent } from './pages/pagina-principal/pagina-princi
 import localeEs from '@angular/common/locales/es'
 import {registerLocaleData} from '@angular/common'
 import { FormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 registerLocaleData(localeEs, 'es')
 
 @NgModule({
@@ -18,7 +20,9 @@ registerLocaleData(localeEs, 'es')
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]
