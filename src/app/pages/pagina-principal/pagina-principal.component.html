@@ -1,4 +1,11 @@
 <div class="contenedorPrincipal">
+    <div class="containerLateral">
+      <div class="containerTemas">
+        <div class="cuadrado temaOscuro" (click)="putTemaOscuro()"></div>
+        <div class="cuadrado temaClaro" (click)="putTemaClaro()"></div>
+        <div class="cuadrado temaVerde" (click)="putTemaVerde()"></div>
+      </div>
+    </div>
     <div class="containerIzq">
         <div class="containerFechaYHora">
             <div class="containerHora" id="reloj">{{momentoActual | date: 'HH:mm:ss'}}</div>
@@ -10,13 +17,14 @@
 
     </div>
 
-    <div class="containerDer" >
+    <div class="containerLateral" >
         <div class="listaAlarmas" *ngIf="listaAlarmas.length>0" >
             <div class="titulo">Lista de Alarmas</div>
             <hr>
-            <div class="" *ngFor="let alarma of listaAlarmas">
+            <div class="" *ngFor="let alarma of listaAlarmas; let i=index">
                 <div>Nombre: {{alarma.nombre}}</div>
                 <div>Hora: {{alarma.hora}}</div>
+                <button (click)="borrarAlarma(i)">Borrar</button>
                 <hr>
             </div>
         </div>

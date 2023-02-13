@@ -19,6 +19,9 @@ export class PaginaPrincipalComponent implements OnInit {
 
   ngOnInit(): void {
     this.mueveReloj();
+    if(localStorage.getItem('alarmas') != null){
+      this.listaAlarmas = JSON.parse(localStorage.getItem('alarmas')!)
+    }
   }
 
 
@@ -39,10 +42,19 @@ export class PaginaPrincipalComponent implements OnInit {
         hora: this.hora
       }
       this.listaAlarmas.push(nuevaAlarma)
+      localStorage.setItem('alarmas', JSON.stringify(this.listaAlarmas))
       console.log(this.listaAlarmas);
       this.nombre = ""
       this.hora = ""
     }
+
+  }
+
+  borrarAlarma(i: number){
+    this.listaAlarmas.splice(i,1)
+    localStorage.setItem('alarmas', JSON.stringify(this.listaAlarmas))
+    console.log('A');
+    
 
   }
 
@@ -92,6 +104,27 @@ export class PaginaPrincipalComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
+  }
+
+  putTemaOscuro(){
+    document.documentElement.style.setProperty('--color-bg', 'black');
+    document.documentElement.style.setProperty('--color-boton','white');
+    document.documentElement.style.setProperty('--color-boton-text','black');
+    document.documentElement.style.setProperty('--color-fecha', 'white');
+  }
+
+  putTemaClaro(){
+    document.documentElement.style.setProperty('--color-bg', '#D9D9D9');
+    document.documentElement.style.setProperty('--color-boton','#0071DA');
+    document.documentElement.style.setProperty('--color-boton-text','white');
+    document.documentElement.style.setProperty('--color-fecha', 'black');
+  }
+
+  putTemaVerde(){
+    document.documentElement.style.setProperty('--color-bg', 'green');
+    document.documentElement.style.setProperty('--color-boton','white');
+    document.documentElement.style.setProperty('--color-boton-text','black');
+    document.documentElement.style.setProperty('--color-fecha', 'white');
   }
 
   beep() {
